@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import "./App.css";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
