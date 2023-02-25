@@ -22,7 +22,7 @@ function App() {
         const token = localStorage.jwtToken;
         setAuthToken(token); // Set token for every request
 
-        console.log("token found");
+        console.log("token found", token);
         // Decode token and get user info and exp
         const decoded = jwt_decode(token);
 
