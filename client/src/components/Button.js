@@ -28,6 +28,7 @@ return (
         className = {`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick = {onClick}
         type = {type}
+        {...buttonProps}
         >
             {children}
         </button>
