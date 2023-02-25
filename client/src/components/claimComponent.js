@@ -1,9 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import claimComponentService from '../services/claimComponentService';
+import { useNavigate } from "react-router-dom";
+
+// import { connect } from "react-redux";
 
 
-const ClaimComponent = () => {
+
+const ClaimComponent = (props) => {
+  // let empId = props.auth.EmployeeId ; //this should take from redux
+  let empId = 58001004 ; //this is the dummy value for Martin Ong 
+
+  const navigate = useNavigate();
+
   const [employeeClaimData, setEmployeeData] = useState();
   const [refreshPage,setRefresh] = useState(false);
   useEffect(() => {
@@ -13,7 +22,11 @@ const ClaimComponent = () => {
 
   const onHandleEdit = (ID) => {
     // redirect to edit claims page
-    alert('Edit '+ID);
+    navigate("/samplepage123", {
+      state: {
+        empId2: empId,
+      }
+    });
   }
   
   const onHandleDel = (ID) => {
@@ -65,3 +78,8 @@ const ClaimComponent = () => {
 };
 
 export default ClaimComponent;
+// const mapStateToProps = (state) => ({
+//   auth: state.auth
+// });
+
+// export default connect(mapStateToProps)(ClaimComponent);
