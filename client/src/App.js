@@ -1,6 +1,9 @@
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/Navbar';
+import Dashboard from './components/Dashboard';
+import ClaimComponent from './claimComponent/claimComponent.js'
 // see min changes
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>
+      <ClaimComponent></ClaimComponent>
+      </div>
     </div>
   );
 }
