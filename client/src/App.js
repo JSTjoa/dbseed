@@ -43,6 +43,9 @@ function App() {
 
     return (
         <div className="App">
+          <header>
+            <Navbar/>
+          </header>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" exact element={<Login />} />
