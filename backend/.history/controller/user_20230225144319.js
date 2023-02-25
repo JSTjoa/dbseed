@@ -77,6 +77,6 @@ const logOutUser = (async (req, res) => {
     }
 });
 module.exports = {
-    createNewUser,
+    getAllUsers,
     logOutUser
 };
