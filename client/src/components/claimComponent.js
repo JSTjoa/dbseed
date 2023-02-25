@@ -5,15 +5,24 @@ import claimComponentService from '../services/claimComponentService';
 
 const ClaimComponent = () => {
   const [employeeClaimData, setEmployeeData] = useState();
+  const [refreshPage,setRefresh] = useState(false);
   useEffect(() => {
       let test2 = claimComponentService.getClaimData() //code to get data from backend
       setEmployeeData(test2);
-  }, []); //when page loads, retrieve data from backend
+  }, [refreshPage]); //when page loads, retrieve data from backend
 
-  const onHandleEdit = () => {
-    alert('edit');
+  const onHandleEdit = (ID) => {
+    // redirect to edit claims page
+    alert('Edit '+ID);
   }
-    
+  
+  const onHandleDel = (ID) => {
+    let isSuccess = claimComponentService.deleteClaim(ID);
+    alert(ID)
+    if (isSuccess) {
+      setRefresh(!refreshPage);
+    }
+  }
 
   return (
     <div>
@@ -41,7 +50,7 @@ const ClaimComponent = () => {
               <th>{data.Status}</th>
               <th>{data.LastEditedClaimDate}</th>
               <th>
-                {("Pending"===data.Status || "Rejected"===data.Status) ? <button onClick={onHandleEdit}>Edit</button>+' '+'Delete':'Nil'}
+                {("Pending"===data.Status || "Rejected"===data.Status) ? <div><button onClick={()=>{onHandleEdit(data.ClaimID)}}>Edit</button><button onClick={()=>{onHandleDel(data.ClaimID)}}>Delete</button></div>:'Nil'}
               </th>
             </tr> 
             )         

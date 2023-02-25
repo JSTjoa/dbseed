@@ -31,8 +31,16 @@ function getClaimData() {
     return employeeClaimList
 }
 
+function deleteClaim(ID) {
+    let isSuccess = false ;
+    //send ClaimID to back end for deletion
+    isSuccess = true;
+    return isSuccess;
+}
+
 const claimComponentServiceFunctions = {
-    getClaimData
+    getClaimData,
+    deleteClaim
 } 
 
 export default claimComponentServiceFunctions
