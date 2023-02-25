@@ -9,6 +9,9 @@ const claimController = require("../controller/claims");
 
 router.post("/claims",claimController.createClaim);
 router.get("/claims/:id",claimController.getClaim);
+router.put("/claimsEdit",claimController.editClaim);
+router.delete("/claimsDelete",claimController.deleteClaim);
+
 
 // router
 //   .route("/claims")

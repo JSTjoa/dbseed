@@ -89,8 +89,20 @@ const editClaim = async (req,res) => {
     }
 }
 
+const deleteClaim = async (req,res) => {
+    try {
+        await Claims.findOneAndDelete({ ClaimID : req.body.ClaimID }).then(res.status(200).json({
+            message: "Claim Update Successful"
+        }))
+    } catch (err) {
+        console.log(err);
+        res.status(500).send();
+    }
+}
+
 module.exports = {
     createClaim,
     editClaim,
-    getClaim
+    getClaim,
+    deleteClaim
   };
