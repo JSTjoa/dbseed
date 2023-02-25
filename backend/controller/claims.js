@@ -1,20 +1,27 @@
 const Claims = require("../model/claims-model");
 const express = require("express");
 const mongoose = require("mongoose");
+const {getPolicy,editPolicyLimit }= require("../controller/policy.js");
+const Policy = require("../model/policy-model");
+let currentID = 15;
 
-let currentID = 0;
 const createClaim =  async (req, res) => {
     // Prevent duplicate submissions
-    if (Claims.findOne(currentID)){
+    if (await Claims.findOne({ClaimID : currentID})){
         res.status(500).send("claim already exists!");
     }
     // query insurance policies by InsuranceID to make sure that client has existing insurance
-    if (!true){
+    const policy = await Policy.findOne({InsuranceID : req.body.InsuranceID})
+    if (!policy){
         res.status(500).send("you do not have an existing insurance policy!");
     }
     // make sure that the claim amount does not exceed remaining claim limit
-    if (!true){
-        res.status(500).send(`You only have ${1} amount left, claim fail!`);
+    const PolicyBalance = await Policy.findOne({InsuranceID : req.body.InsuranceID});
+    if (PolicyBalance.RemainingClaimLimit < req.body.deductAmount) {
+        req.body.status = "Rejected";
+    }else{
+        Policy.findOneAndUpdate({ InsuranceID : req.body.InsuranceID }, 
+                {$inc: { RemainingClaimLimit: -req.body.Amount }}).then(console.log("minus"));
     }
     try {
         
@@ -29,7 +36,8 @@ const createClaim =  async (req, res) => {
             FollowUp : req.body.FollowUp,
             PreviousClaimID : req.body.PreviousClaimID,
             Status : req.body.Status,
-            LastEditedClaimDate : req.body.LastEditedClaimDate
+            LastEditedClaimDate : req.body.LastEditedClaimDate,
+            EmployeeID: req.body.EmployeeID
         });
 
         const newClaim = await claim.save();
@@ -41,6 +49,24 @@ const createClaim =  async (req, res) => {
         res.status(500).send();
     }
 }
+
+const getClaim = async (req, res)=>{
+    try{
+        //Take in the request (ID of employee)  
+        const {id} = req.params;
+        //Query the database for the relevant ID and return
+        const target_ID = await Claims.findOne({EmployeeID: id});
+        res.send(target_ID);
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+module.exports = {    createClaim,
+    getClaim
+  };
+
+
 
 const editClaim = async (req,res) => {
     try {
@@ -65,5 +91,6 @@ const editClaim = async (req,res) => {
 
 module.exports = {
     createClaim,
-    editClaim
+    editClaim,
+    getClaim
   };
