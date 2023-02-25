@@ -46,3 +46,16 @@
     transition: all 0.3s ease-out;
     transition: 250ms;
 }
+
+
+.btn--back {
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+    float: left;
+    font-size: 16px;
+}
+
