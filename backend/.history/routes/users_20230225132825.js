@@ -2,19 +2,19 @@ const express = require("express");
 const router = express.Router();
 const User = require("../model/user-model");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt')
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 router.post("/user", async (req, res) => {
     try {
-        const exists = await User.exists({
-            EmployeeID: req.body.EmployeeID
-        });
+        const exists = User.exists({
+            EmployeeID: EmployeeID
+        })
         if (exists) {
             res.status(409).send({
                 message: "employee ald exists"
-            });
+            })
         }
         const hashedPassword = await bcrypt.hash(req.body.Password, 10);
         const user = new User({
@@ -24,7 +24,7 @@ router.post("/user", async (req, res) => {
             FirstName: req.body.FirstName,
             LastName: req.body.LastName,
             Age: req.body.Age,
-            Role: req.body.Role
+            Role: req.body.role
         });
         const newUser = await user.save();
         //const allUsers = await User.find({});
@@ -36,9 +36,8 @@ router.post("/user", async (req, res) => {
 });
 
 router.post("/user/login", async (req, res) => {
-    //ffs
     const user = await User.findOne({
-        EmployeeID: req.body.EmployeeID
+        username: req.body.EmployeeID
     });
     if (user == null) {
         return res.status(404).send({
@@ -59,8 +58,6 @@ router.post("/user/login", async (req, res) => {
             );
             console.log(accessToken);
             res.status(200).json({
-                EmployeeID: user.EmployeeID,
-                role: user.Role,
                 authenticated: true,
                 message: "Login success",
                 accessToken: accessToken

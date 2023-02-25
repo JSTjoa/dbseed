@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var Schema = mongoose.Schema;
 let PolicyModelSchema = new Schema({
     InsuranceID: {
         type: Number,

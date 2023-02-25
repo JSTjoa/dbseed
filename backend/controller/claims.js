@@ -1,40 +1,32 @@
-export const updateEntireClaim = (req,res)=>{
-    // get the claim id from the req
-    const { requestedId } = req.params;
-    // query claim from database
-    const target = pass;
-    const args = req.body;
+const Claims = require("../model/claims-model");
+const { default: mongoose } = require("mongoose");
 
-    if (target["FirstName"]){
-        pass;
-    }
-    if (target["LastName"]){
-        pass;
-    }
-    if (target["ExpenseDate"]){
-        pass;
-    }
-    if (target["Amount"]){
-        pass;
-    }
-    if (target["Purpose"]){
-        pass;
-    }
-    if (target["FollowUp"]){
-        pass;
-    }
-    if (target["PreviousClaimID"]){
-        pass;
-    }
-    if (target["Status"]){
-        pass;
-    }
-    if (target["LastEditedClaimDate"]){
-        pass;
-    }
+let currentID = 0;
+const createClaim =  async (req, res) => {
+    try {
+        const claim = new Claims({
+            ClaimID : currentID,
+            InsuranceID : req.body.InsuranceID,
+            FirstName : req.body.FirstName,
+            LastName : req.body.LastName,
+            ExpenseDate : req.body.ExpenseDate,
+            Amount : req.body.Amount,
+            Purpose : req.body.Purpose,
+            FollowUp : req.body.FollowUp,
+            PreviousClaimID : req.body.PreviousClaimID,
+            Status : req.body.Status,
+            LastEditedClaimDate : req.body.LastEditedClaimDate
+        });
 
-    
-
-
-    res.send('Claim successfully updated');
+        const newClaim = await claim.save();
+        //const allUsers = await User.find({});
+        res.status(201).json(newClaim);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send();
+    }
 }
+
+module.exports = {
+    createClaim
+  };

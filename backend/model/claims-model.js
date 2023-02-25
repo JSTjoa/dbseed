@@ -1,8 +1,16 @@
-import mongoose from 'mongoose';
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var Schema = mongoose.Schema
 let ClaimModelSchema = new Schema({
     
+    ClaimID: {
+        type: Number,
+        required: true
+    },
+    InsuranceID: {
+        type: Number,
+        required: true
+    },
     FirstName: {
         type: String,
         required: true
@@ -24,15 +32,14 @@ let ClaimModelSchema = new Schema({
         required: true
     },
     FollowUp: {
-        type: Boolean,
+        type: Number,
         required: true
     },
     PreviousClaimID: {
         type: Number,
-        required: true
     },
     Status: {
-        type: Boolean,
+        type: String,
         required: true
     },
     LastEditedClaimDate:{
@@ -42,4 +49,5 @@ let ClaimModelSchema = new Schema({
 
 })
 
-export default mongoose.model('ClaimsModel', ClaimModelSchema)
+module.exports = mongoose.model('insuranceclaims', ClaimModelSchema);
+
