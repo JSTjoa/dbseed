@@ -26,8 +26,10 @@ const corsConfig = {
 
 const userRouter = require("./routes/users-routes");
 const claimsRouter = require("./routes/claims-routes");
+const policiesRouter = require("./routes/policies-routes");
 app.use("/api", userRouter);
 app.use("/api", claimsRouter);
+app.use("/api", policiesRouter);
 // app.use(express.urlencoded({ extended: true }))
 // app.use(express.json())
 // app.use(cors(corsConfig)) // config cors so that front-end can use

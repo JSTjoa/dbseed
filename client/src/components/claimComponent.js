@@ -16,7 +16,7 @@ const ClaimComponent = (props) => {
   const [employeeClaimData, setEmployeeData] = useState();
   const [refreshPage,setRefresh] = useState(false);
   useEffect(() => {
-      let test2 = claimComponentService.getClaimData() //code to get data from backend
+      let test2 = claimComponentService.getClaimData(empId) //code to get data from backend
       setEmployeeData(test2);
   }, [refreshPage]); //when page loads, retrieve data from backend
 
@@ -25,6 +25,7 @@ const ClaimComponent = (props) => {
     navigate("/edit-claim", {
       state: {
         empId2: empId,
+        claimId: ID
       }
     });
   }

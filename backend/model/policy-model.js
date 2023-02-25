@@ -31,4 +31,4 @@ let PolicyModelSchema = new Schema({
     }
 });
 
-export default mongoose.model("PolicyModel", PolicyModelSchema);
+module.exports = mongoose.model("insurancepolicy", PolicyModelSchema);
