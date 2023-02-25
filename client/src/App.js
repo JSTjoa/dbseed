@@ -2,7 +2,8 @@ import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-// see min changes
+import ClaimComponent from './claimComponent/claimComponent.js'
+
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         </Routes>
       </Router>
     </>
+
   );
 }
 
