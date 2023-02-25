@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 
 import "./components/claimComponentCSS.css";
 import ClaimComponent from "./components/claimComponent";
-
+  
 // Auth stuff
 import setAuthToken from "./utils/authentication";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -51,6 +51,7 @@ function App() {
             </Routes>
         </div>
     );
+
 }
 
 const mapStateToProps = (state) => ({

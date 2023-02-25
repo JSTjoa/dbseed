@@ -5,8 +5,6 @@ import "../App.css";
 // Auth stuff
 import axios from "../utils/axios";
 import { connect } from "react-redux";
-import { setAuthToken } from "../utils/authentication";
-import { loginUser } from "../actions/authActions";
 
 const LOGIN_ENDPT = "/api/user/login"; // TO UPDATE
 
