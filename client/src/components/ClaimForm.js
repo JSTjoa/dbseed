@@ -1,15 +1,20 @@
 import { useState } from 'react'
 import './claimForm.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import App from '../App';
 import { Button } from './Button';
+import { useNavigate } from "react-router-dom";
+
 
 const ClaimForm = () => {
     const [expenseDate, setDate] = useState('')
     const [claimType, setType] = useState('placeholder')
     const [purpose, setPurpose] = useState('')
     const [amount, setAmount] = useState('')
-    
+    let navigate = useNavigate();
+    function onHandleClick123() {
+        navigate('/login');
+    }
+
     const onSubmit = (e) => {
         e.preventDefault()
         if(!expenseDate) {
@@ -36,14 +41,10 @@ const ClaimForm = () => {
 
     return (
         <div>
-            <Routes>
-                <Route path="/home" element={<App/>} />
-            </Routes>
-            <Button buttonStyle='btn--back' path='/home'> Back </Button>
-            <br/>
-            <h2> New Claim </h2>
-
+{/*             <Button buttonStyle='btn--back' onClick={()=>{onHandleClick123()}}> Back </Button>
+ */}
             <div className="container">
+            <h2> New Claim </h2>
                 <form className='add-form' onSubmit={onSubmit}>
                     {/* Date: Expense Date */}
                     <div className='form-control'>

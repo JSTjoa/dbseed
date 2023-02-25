@@ -15,6 +15,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 // Redux stuff
 import store from "./store";
 import { connect } from "react-redux";
+import ClaimForm from "./components/ClaimForm";
 
 function App() {
     const navigate = useNavigate();
@@ -49,6 +50,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" exact element={<Login />} />
+                <Route path="/create" exact element={<ClaimForm />} />
                 <Route path="/register" exact element={<Register />} />
                 <Route path="/claims" element={<ClaimComponent />}></Route>
             </Routes>
