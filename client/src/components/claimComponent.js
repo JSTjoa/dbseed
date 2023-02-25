@@ -22,7 +22,7 @@ const ClaimComponent = (props) => {
 
   const onHandleEdit = (ID) => {
     // redirect to edit claims page
-    navigate("/samplepage123", {
+    navigate("/edit-claim", {
       state: {
         empId2: empId,
         claimId: ID
