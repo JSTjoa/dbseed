@@ -26,10 +26,12 @@ const ClaimComponent = () => {
 
   return (
     <div>
-      <h2>User Claims</h2>
-      <table>
+      <table className="styled-table">
         <thead>
           <tr>
+            <th className="active-row" colSpan='7' id='table-title-pre'>User Claims</th>
+          </tr>
+          <tr className="active-row">
             <th>Claim ID</th>
             <th>Expense Date</th>
             <th>Amount</th>

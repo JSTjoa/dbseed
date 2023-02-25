@@ -4,6 +4,9 @@ import "./App.css";
 import Login from "./components/Login";
 import Home from "./pages/Home";
 
+import './components/claimComponentCSS.css'
+import ClaimComponent from './components/claimComponent';
+
 // Auth stuff
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/authentication";
@@ -46,6 +49,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" exact element={<Login />} />
+                <Route path = '/claims' element = {<ClaimComponent/>}></Route>
             </Routes>
         </div>
     );
