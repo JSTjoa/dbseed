@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import "./components/claimComponentCSS.css";
 import ClaimComponent from "./components/claimComponent";
 import ClaimPage from './pages/Claims';
+import SampleComponent from './components/sample123'
   
 // Auth stuff
 import setAuthToken from "./utils/authentication";
@@ -41,7 +42,7 @@ function App() {
         const decoded = { EmployeeId: localStorage.EmployeeId, role: localStorage.role };
         store.dispatch(setCurrentUser(decoded));
     }
-
+    
     return (
         <div className="App">
             <Routes>
@@ -49,6 +50,7 @@ function App() {
                 <Route path="/login" exact element={<Login />} />
                 <Route path="/register" exact element={<Register />} />
                 <Route path="/claims" element={<ClaimPage />}></Route>
+                <Route path="/samplepage123" element={<SampleComponent />} />
             </Routes>
         </div>
     );
