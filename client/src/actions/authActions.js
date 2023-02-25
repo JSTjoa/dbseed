@@ -1,4 +1,4 @@
-import setAuthToken from "../utils/setAuthToken";
+import setAuthToken from "../utils/authentication";
 import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER, USER_LOADING } from "./types";
 

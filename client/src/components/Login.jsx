@@ -1,13 +1,12 @@
 import { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
-import { logo } from "../../public/images/dbs_logo.svg";
 
 // Auth stuff
 import axios from "../utils/axios";
 import { connect } from "react-redux";
 import { setAuthToken } from "../utils/authentication";
-import { loginUser } from "../../actions/authActions";
+import { loginUser } from "../actions/authActions";
 
 const LOGIN_ENDPT = "/auth/login"; // TO UPDATE
 const Login = (props) => {
@@ -40,7 +39,6 @@ const Login = (props) => {
                 userId: "",
                 password: ""
             });
-
             navigate(from_page, { replace: true });
         } catch (err) {
             if (!err?.response) {
@@ -59,7 +57,7 @@ const Login = (props) => {
         <div className="form">
             <form onSubmit={handleSubmit}>
                 <div className="form-inner">
-                    <img className="logo" alt="DBS Logo" src={logo} />
+                    <img className="logo" alt="DBS Logo" src="/images/dbs_logo.svg" />
                     <div className="form-group">
                         <div>
                             <label htmlFor="userId">User ID</label>
