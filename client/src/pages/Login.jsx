@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import "../App.css";
 
 // Auth stuff
@@ -88,13 +88,14 @@ const Login = (props) => {
                     </div>
                     {errMessage !== "" ? <div className="error">{errMessage}</div> : ""}
                     <input type="submit" value="Login" />
+                    <p>
+                        New to DBS? <br />
+                        <Link to="/register">
+                            <span> Join us here</span>
+                        </Link>
+                    </p>
                 </div>
             </form>
-            <p>
-                {" "}
-                New to DBS? <br />
-                <span> Sign in here</span>
-            </p>
         </div>
     );
 };
