@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 
 import "./components/claimComponentCSS.css";
 import ClaimComponent from "./components/claimComponent";
+import ClaimPage from './pages/Claims';
   
 // Auth stuff
 import setAuthToken from "./utils/authentication";
@@ -47,7 +48,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" exact element={<Login />} />
                 <Route path="/register" exact element={<Register />} />
-                <Route path="/claims" element={<ClaimComponent />}></Route>
+                <Route path="/claims" element={<ClaimPage />}></Route>
             </Routes>
         </div>
     );
