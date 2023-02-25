@@ -6,24 +6,6 @@ const bcrypt = require('bcrypt')
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
-const getUser = async(req, res) => {
-    try {
-        const exists = await User.find({
-            EmployeeID: req.body.EmployeeID
-        })
-        if (exists) {
-            res.status(201).json(exists)
-        } else {
-            res.status(409).send({
-                message: "user not found"
-            })
-        }
-    } catch (err) {
-        console.log(err);
-        res.status(500).send();
-    }
-}
-
 const createNewUser = async (req, res) => {
     try {
         const exists = await User.exists({
@@ -101,6 +83,5 @@ const logInUser = async (req, res) => {
 
 module.exports = {
     createNewUser,
-    logInUser,
-    getUser
+    logInUser
 };

@@ -101,6 +101,5 @@ const logInUser = async (req, res) => {
 
 module.exports = {
     createNewUser,
-    logInUser,
-    getUser
+    logInUser
 };
