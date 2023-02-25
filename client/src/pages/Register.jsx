@@ -68,7 +68,10 @@ const Login = (props) => {
         } finally {
             setDetails({
                 userId: "",
-                password: ""
+                password: "",
+                age: "",
+                firstName: "",
+                lastName: ""
             });
         }
     };

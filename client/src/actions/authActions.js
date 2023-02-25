@@ -22,6 +22,7 @@ export const loginUser = (resData) => (dispatch) => {
 
 // Set logged in user
 export const setCurrentUser = (data) => {
+    console.log(data);
     return {
         type: SET_CURRENT_USER,
         payload: data
