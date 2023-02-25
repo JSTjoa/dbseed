@@ -5,10 +5,8 @@ import "../App.css";
 // Auth stuff
 import axios from "../utils/axios";
 import { connect } from "react-redux";
-import { setAuthToken } from "../utils/authentication";
-import { loginUser } from "../actions/authActions";
 
-const LOGIN_ENDPT = "/api/user/login"; // TO UPDATE
+const REGIST_ENDPT = "/api/user/login"; // TO UPDATE
 
 const Login = (props) => {
     const navigate = useNavigate();
@@ -34,19 +32,15 @@ const Login = (props) => {
 
         try {
             const sendingData = { EmployeeID: details.userId, Password: details.password };
-            const response = await axios.post(LOGIN_ENDPT, JSON.stringify(sendingData));
-            props.loginUser(response); // If login successful update store
+            const response = await axios.post(REGIST_ENDPT, JSON.stringify(sendingData));
+            props.registerUser(response); // If login successful update store
             // const roles = response?.data?.roles; // for role based
             navigate(from_page, { replace: true });
         } catch (err) {
             if (!err?.response) {
                 setErrMessage("No Response from server. Please try again");
-            } else if (err.response?.status === 400) {
-                setErrMessage("Missing Username or Password");
-            } else if (err.response?.status === 401) {
-                setErrMessage("Unauthorized");
             } else {
-                setErrMessage("Username or Password is incorrect!");
+                setErrMessage("Missing Username or Password");
             }
         } finally {
             setDetails({
