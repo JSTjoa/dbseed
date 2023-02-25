@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
-const createNewUser = async (req, res) => {
+const createNewUser = (async (req, res) => {
     try {
         const exists = await User.exists({
             EmployeeID: req.body.EmployeeID
@@ -33,9 +33,9 @@ const createNewUser = async (req, res) => {
         console.log(err);
         res.status(500).send();
     }
-};
+});
 
-const logOutUser = async (req, res) => {
+const logOutUser = (async (req, res) => {
     const user = await User.findOne({
         EmployeeID: req.body.EmployeeID
     });
@@ -75,9 +75,8 @@ const logOutUser = async (req, res) => {
         console.log(err);
         res.status(500).send();
     }
-};
-
+});
 module.exports = {
-    createNewUser,
+    getAllUsers,
     logOutUser
 };

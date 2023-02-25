@@ -3,8 +3,8 @@ const router = express.Router();
 const usersController = require("../controller/user");
 
 router
-    .route("/user") // matches /users
-    .post('/create', usersController.createNewUser)
-    .post('/login', usersController.logOutUser);
+  .route("/user") // matches /users
+  .post(usersController.createNewUser)
+  .delete(usersController.logOutUser);
 
 module.exports = router;

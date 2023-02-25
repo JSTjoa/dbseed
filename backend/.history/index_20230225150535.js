@@ -24,8 +24,8 @@ const corsConfig = {
     origin: true
 };
 
-const userRouter = require("./routes/users-routes");
-const claimsRouter = require("./routes/claims-routes");
+const userRouter = require("./routes/users-route");
+const claimsRouter = require("./routes/claims-route");
 app.use("/api", userRouter);
 app.use("/api", claimsRouter);
 // app.use(express.urlencoded({ extended: true }))
