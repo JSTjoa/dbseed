@@ -1,19 +1,37 @@
-import { MongoClient } from "mongodb";
+//import { MongoClient } from "mongodb";
 
+const MongoClient = require('mongodb').MongoClient;
+//Get connection URI
 const connectionString = process.env.ATLAS_URI || "";
-
+//Create a new MongoClient
 const client = new MongoClient(connectionString);
+
+// Connect to the MongoDB server
+// client.connect(function(err) {
+//   if (err) throw err;
+
+//   // Select the database
+//   const db = client.db("Insurance-Claim");
+
+//   // Select the collection
+//   const collection = db.collection("User");
+
+//   // Query the collection
+//   collection.find({ name: "John" }).toArray(function(err, result) {
+//     if (err) throw err;
+
+//     console.log(result);
+//   });
+// });
 
 let conn;
 try {
-  conn = await client.connect();
+  conn = client.connect();
 } catch(e) {
   console.error(e);
 }
 
 let db = conn.db("User");
-
-export default db;
 
 console.log(db);
 
@@ -29,5 +47,5 @@ export const queryFromDB = (req, res)=>{
       console.log(result);
     }
   })
-  
+  res.send(target_ID);
 }
