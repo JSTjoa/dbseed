@@ -8,7 +8,8 @@ import { connect } from "react-redux";
 import { setAuthToken } from "../utils/authentication";
 import { loginUser } from "../actions/authActions";
 
-const LOGIN_ENDPT = "/auth/login"; // TO UPDATE
+const LOGIN_ENDPT = "/api/user/login"; // TO UPDATE
+
 const Login = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -32,7 +33,8 @@ const Login = (props) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(LOGIN_ENDPT, JSON.stringify({ details }));
+            // const response = await axios.post(LOGIN_ENDPT, JSON.stringify({ details }));
+            const response = { accessToken: "test" };
             props.loginUser(response); // If login successful update store
             // const roles = response?.data?.roles; // for role based
             setDetails({
