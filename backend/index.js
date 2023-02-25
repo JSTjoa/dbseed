@@ -25,13 +25,16 @@ const corsConfig = {
 };
 
 const userRouter = require("./routes/users");
+const claimsRouter = require("./routes/claims");
 app.use("/api", userRouter);
+app.use("/api", claimsRouter);
 // app.use(express.urlencoded({ extended: true }))
 // app.use(express.json())
 // app.use(cors(corsConfig)) // config cors so that front-end can use
 // app.options('*', cors())
 
 const User = require("./model/user-model");
+// const Claim = require("./model/claims-model");
 
 app.get("/getUser", async (req, res) => {
     const getuser = await User.find();

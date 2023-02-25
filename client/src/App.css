@@ -5,45 +5,12 @@
     font-family: "PT Sans", sans-serif;
 }
 
-.home,
-.invest,
-.learn,
-.sign-up {
+.home {
     display: flex;
     height: 90vh;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-}
-
-.invest {
-    background-image: url("/public/images/img-2.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #fff;
-    font-size: 100px;
-}
-
-.learn {
-    background-image: url("/public/images/img-1.jpg");
-    background-position: center;
-    background-size: fill;
-    background-repeat: no-repeat;
-    color: #fff;
-    font-size: 100px;
-}
-
-.welcome {
-    background: url("/public/images/img-dbs 12.jpg") center center/cover no-repeat;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
-    object-fit: contain;
 }
 
 .form-inner {
@@ -129,5 +96,5 @@ label {
 h1 {
     color: #fff;
     font-size: 80px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
