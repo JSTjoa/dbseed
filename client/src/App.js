@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
 
@@ -13,6 +13,7 @@ import store from "./store";
 import { connect } from "react-redux";
 
 function App() {
+    const navigate = useNavigate();
     // Check for token to keep user logged in
     if (localStorage.jwtToken) {
         // Set auth token header auth
@@ -29,7 +30,7 @@ function App() {
             store.dispatch(logoutUser());
 
             // Redirect to login
-            window.location.href = "./login";
+            navigate("/login");
         }
 
         // Set user and isAuthenticated

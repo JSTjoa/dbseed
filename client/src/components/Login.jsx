@@ -3,12 +3,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import { logo } from "../../public/images/dbs_logo.svg";
 
+// Auth stuff
 import axios from "../utils/axios";
+import { connect } from "react-redux";
 import { setAuthToken } from "../utils/authentication";
+import { loginUser } from "../../actions/authActions";
 
-const LOGIN_ENDPT = "/auth"; // TO UPDATE
-
-const Login = () => {
+const LOGIN_ENDPT = "/auth/login"; // TO UPDATE
+const Login = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
     const from_page = location.state?.from?.pathname || "/";
@@ -32,8 +34,7 @@ const Login = () => {
 
         try {
             const response = await axios.post(LOGIN_ENDPT, JSON.stringify({ details }));
-
-            const accessToken = response?.data?.accessToken;
+            props.loginUser(response); // If login successful update store
             // const roles = response?.data?.roles; // for role based
             setDetails({
                 userId: "",
@@ -58,7 +59,7 @@ const Login = () => {
         <div className="form">
             <form onSubmit={handleSubmit}>
                 <div className="form-inner">
-                    <img className="logo" src="images/dbs_logo.svg" />
+                    <img className="logo" alt="DBS Logo" src={logo} />
                     <div className="form-group">
                         <div>
                             <label htmlFor="userId">User ID</label>
@@ -99,4 +100,8 @@ const Login = () => {
     );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps)(Login);
