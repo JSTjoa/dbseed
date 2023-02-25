@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
-import { Button } from './Button';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.css";
+import { Button } from "./Button";
+import { connect } from "react-redux";
 
-function Navbar() {
+function Navbar(props) {
+    const navigate = useNavigate();
 
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
@@ -12,7 +14,7 @@ function Navbar() {
     const closeMobileMenu = () => setClick(false);
 
     const showButton = () => {
-        if(window.innerWidth <= 960) {
+        if (window.innerWidth <= 960) {
             setButton(false);
         } else {
             setButton(true);
@@ -20,26 +22,36 @@ function Navbar() {
     };
 
     useEffect(() => {
-        showButton()
-    }, [])
+        showButton();
+    }, []);
 
-    window.addEventListener('resize', showButton)
+    window.addEventListener("resize", showButton);
 
-  return (
-    <>
-        <nav className='navbar'>
-            <div className='navbar-container'>
-                <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
-                    <img src='images/dbs_logo.svg'/>
-                </Link>
-                {button && 
-                <Button buttonStyle='btn--primary'> 
-                    Logout <i className ="fa-solid fa-lock"></i> 
-                </Button>}
-            </div>
-        </nav>
-    </>
-  )
+    const handleLogout = () => {
+        props.logoutUser();
+        navigate("/login");
+    };
+
+    return (
+        <>
+            <nav className="navbar">
+                <div className="navbar-container">
+                    <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+                        <img src="images/dbs_logo.svg" />
+                    </Link>
+                    {button && (
+                        <Button buttonStyle="btn--primary" onClick={handleLogout}>
+                            Logout <i className="fa-solid fa-lock"></i>
+                        </Button>
+                    )}
+                </div>
+            </nav>
+        </>
+    );
 }
 
-export default Navbar
+const mapStateToProps = (state) => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps)(Navbar);

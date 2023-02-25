@@ -39,7 +39,7 @@ export const setUserLoading = (status) => {
 };
 
 // Log user out
-export const logoutUser = (history) => (dispatch) => {
+export const logoutUser = () => (dispatch) => {
     // Set current user to empty object {} which will set isAuthenticated to false
     dispatch(setCurrentUser({}, false));
 

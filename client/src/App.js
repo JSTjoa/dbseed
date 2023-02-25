@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 
 import "./components/claimComponentCSS.css";
 import ClaimComponent from "./components/claimComponent";
-  
+
 // Auth stuff
 import setAuthToken from "./utils/authentication";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -43,18 +43,18 @@ function App() {
 
     return (
         <div className="App">
-          <header>
-            <Navbar/>
-          </header>
+            <header>
+                <Navbar />
+            </header>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" exact element={<Login />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/login" exact element={<Login />} />
                 <Route path="/register" exact element={<Register />} />
                 <Route path="/claims" element={<ClaimComponent />}></Route>
             </Routes>
         </div>
     );
-
 }
 
 const mapStateToProps = (state) => ({
