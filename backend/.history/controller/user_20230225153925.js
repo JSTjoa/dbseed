@@ -57,7 +57,7 @@ const logInUser = async (req, res) => {
                 { expiresIn: "24h" }
             );
             const decodedToken = jwt.decode(accessToken)
-            const date = new Date(decodedToken.exp * 1000)
+            const date = decodedToken * new Date(1473912000*1000)
             res.status(200).json({
                 EmployeeID: user.EmployeeID,
                 FirstName: user.FirstName,
