@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar';
-import Dashboard from './components/Dashboard';
-import ClaimComponent from './claimComponent/claimComponent.js'
-// see min changes
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <div>
-      <ClaimComponent></ClaimComponent>
-      </div>
-    </div>
+    <>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path = '/' element= {<Home/>} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
