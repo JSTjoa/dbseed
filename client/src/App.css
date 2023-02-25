@@ -1,38 +1,133 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "PT Sans", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home,
+.invest,
+.learn,
+.sign-up {
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.invest {
+    background-image: url("/public/images/img-2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.learn {
+    background-image: url("/public/images/img-1.jpg");
+    background-position: center;
+    background-size: fill;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-size: 100px;
 }
 
-.App-link {
-  color: #61dafb;
+.welcome {
+    background: url("/public/images/img-dbs 12.jpg") center center/cover no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-inner {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 500px;
+    padding: 60px 45px 40px 45px;
+}
+
+.form {
+    background: url("/public/images/img-dbs 11.jpg") center center/cover no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-items: flex-end;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    padding: 200px 300px 150px 150px;
+    object-fit: contain;
+}
+
+.form input {
+    padding: 4px 7px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #383838;
+    border-style: solid;
+    border-color: #d9d9d9;
+    background-color: #fff;
+    height: 40px;
+    width: 100%;
+}
+
+input[value="Login"] {
+    height: 50px;
+    border-radius: 2px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #fe3035;
+    color: #ffff;
+    margin: 30px 0px 0px 0px;
+}
+
+input[value="Get Started"] {
+    height: 50px;
+    border-radius: 2px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fe3035;
+    padding: 8px 20px;
+    border: 1px solid #fe3035;
+    transition: all 0.3s ease-out;
+    margin: 10px 0px 0px 0px;
+}
+
+.logo {
+    height: 40px;
+    margin: 0px 0px 30px 0px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.error {
+    margin-top: 10px;
+    color: #fe3035;
+}
+
+label {
+    color: #383838;
+}
+
+h1 {
+    color: #fff;
+    font-size: 80px;
+    margin-bottom: 20px;
 }

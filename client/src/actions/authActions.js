@@ -1,27 +1,31 @@
 import setAuthToken from "../utils/authentication";
-import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER, USER_LOADING } from "./types";
+
+// Register User
+export const registerUser = (resData) => (dispatch) => {
+    dispatch(loginUser());
+};
 
 // Login - get user token
 export const loginUser = (resData) => (dispatch) => {
-    const { token } = resData;
-    localStorage.setItem("jwtToken", token);
+    const { accessToken, EmployeeID, role } = resData;
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("EmployeeId", EmployeeID);
+    localStorage.setItem("role", role);
+    localStorage.setItem("expiry", role); // TO UPDATE
 
     // Set token to Auth header
-    setAuthToken(token);
-
-    // Decode token to get user data
-    const decoded = jwt_decode(token);
+    setAuthToken(accessToken);
 
     // Set current user
-    dispatch(setCurrentUser(decoded));
+    dispatch(setCurrentUser({ EmployeeID, role }));
 };
 
 // Set logged in user
-export const setCurrentUser = (decodedToken) => {
+export const setCurrentUser = (data) => {
     return {
         type: SET_CURRENT_USER,
-        payload: decodedToken
+        payload: data
     };
 };
 
@@ -39,7 +43,9 @@ export const logoutUser = (history) => (dispatch) => {
     dispatch(setCurrentUser({}, false));
 
     // Remove token from local storage
-    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("EmployeeId");
+    localStorage.removeItem("role");
 
     // Remove auth header for future requests
     setAuthToken(false);
