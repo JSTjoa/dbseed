@@ -24,7 +24,7 @@ router.post("/user", async (req, res) => {
             FirstName: req.body.FirstName,
             LastName: req.body.LastName,
             Age: req.body.Age,
-            Role: req.body.Role
+            Role: req.body.role
         });
         const newUser = await user.save();
         //const allUsers = await User.find({});
