@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home {
   display: flex;
-  flex-direction: column;
+  height: 90vh;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 3rem;
 }
 
-.App-link {
-  color: #61dafb;
+
+.form-inner {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 500px;
+  padding: 60px 45px 40px 45px;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.form {
+  background: url('/public/images/img-dbs 11.jpg') center center/cover no-repeat;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-items: flex-end;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  padding: 200px 300px 150px 150px; 
+  object-fit: contain;
+  
+}
+
+.form input {
+  padding: 4px 7px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #383838;
+  border-style: solid;
+  border-color: #d9d9d9;
+  background-color: #fff;
+  height: 40px;
+  width: 100%;
+}
+
+input[value='Login'] {
+  height: 50px;
+  border-radius: 2px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #FE3035;
+  color: #FFFF;
+  margin: 30px 0px 0px 0px;
+}
+
+input[value='Get Started'] {
+  height: 50px;
+  border-radius: 2px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: #FE3035;
+  padding: 8px 20px;
+  border: 1px solid #FE3035;
+  transition: all 0.3s ease-out;
+  margin: 10px 0px 0px 0px;
+}
+
+.logo {
+  height: 40px;
+  margin: 0px 0px 30px 0px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.error {
+  margin-top: 10px;
+  color:#FE3035
+}
+
+label {
+  color: #383838
+}
+
+h1 {
+  color: #fff;
+  font-size: 80px;
+  margin-bottom: 5px;
 }
