@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const usersController = require("../controller/user");
 
-router.post("/createUser", usersController.createNewUser)
-router.post("/logOut", usersController.logOutUser)
+router
+    .route("/user") // matches /users
+    .post('/create', usersController.createNewUser)
+    .post('/login', usersController.logOutUser);
 
 module.exports = router;
