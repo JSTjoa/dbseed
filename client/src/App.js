@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { useNavigate, BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import "./App.css";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 
 import "./components/claimComponentCSS.css";
 import ClaimComponent from "./components/claimComponent";
+import ClaimPage from './pages/Claims';
   
 // Auth stuff
 import setAuthToken from "./utils/authentication";
@@ -43,11 +44,14 @@ function App() {
 
     return (
         <div className="App">
+          <header>
+            <Navbar/>
+          </header>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" exact element={<Login />} />
                 <Route path="/register" exact element={<Register />} />
-                <Route path="/claims" element={<ClaimComponent />}></Route>
+                <Route path="/claims" element={<ClaimPage />}></Route>
             </Routes>
         </div>
     );

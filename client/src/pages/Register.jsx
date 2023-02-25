@@ -5,6 +5,7 @@ import "../App.css";
 // Auth stuff
 import axios from "../utils/axios";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const REGIST_ENDPT = "/api/user/login"; // TO UPDATE
 
@@ -83,14 +84,15 @@ const Login = (props) => {
                         />
                     </div>
                     {errMessage !== "" ? <div className="error">{errMessage}</div> : ""}
-                    <input type="submit" value="Login" />
+                    <input type="submit" value="Register" />
+                    <p>
+                        Already have an account? <br />
+                        <Link to="/login">
+                            <span> Sign in here</span>
+                        </Link>
+                    </p>
                 </div>
             </form>
-            <p>
-                {" "}
-                New to DBS? <br />
-                <span> Sign in here</span>
-            </p>
         </div>
     );
 };

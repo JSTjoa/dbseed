@@ -8,6 +8,7 @@ export const registerUser = (resData) => (dispatch) => {
 
 // Login - get user token
 export const loginUser = (resData) => (dispatch) => {
+    console.log("called", resData);
     const { accessToken, EmployeeID, role } = resData;
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("EmployeeId", EmployeeID);
