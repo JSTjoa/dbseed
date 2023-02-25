@@ -56,8 +56,10 @@ const logInUser = async (req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: "24h" }
             );
+            console.log(accessToken);
             const decodedToken = jwt.decode(accessToken)
-            const date = new Date(decodedToken.exp * 1000)
+            const date = new Date(0)
+            date.setUTCDate(decodedToken.exp);
             res.status(200).json({
                 EmployeeID: user.EmployeeID,
                 FirstName: user.FirstName,

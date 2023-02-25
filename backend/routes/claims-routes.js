@@ -13,7 +13,7 @@ router
   .route("/claims")
 //   .get(claimsController.)
   .post(claimsController.createClaim)
-//   .patch(claimsController.updateUser)
+  .put(claimsController.editClaim)
 //   .delete(claimsController.deleteUser);
 
 module.exports = router;

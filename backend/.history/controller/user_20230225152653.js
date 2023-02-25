@@ -56,13 +56,12 @@ const logInUser = async (req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: "24h" }
             );
-            const decodedToken = jwt.decode(accessToken)
-            const date = new Date(decodedToken.exp * 1000)
+            console.log(accessToken);
             res.status(200).json({
                 EmployeeID: user.EmployeeID,
                 FirstName: user.FirstName,
                 LastName: user.LastName,
-                TokenExpiry: date,
+                TokenExpiry:
                 Role: user.Role,
                 authenticated: true,
                 message: "Login success",
