@@ -29,11 +29,11 @@ const corsConfig = {
 // app.use(cors(corsConfig)) // config cors so that front-end can use
 // app.options('*', cors())
 
-const Users = require("./model/user-model");
+const User = require("./model/user-model");
 
-app.get("/getUsers", async (req, res) => {
-    const getusers = await User.find();
-    res.json(getusers);
+app.get("/getUser", async (req, res) => {
+    const getuser = await User.find();
+    res.json(getuser);
 });
 //router.post('/login', loginUser)
 //router.post('/logout', logoutUser)
