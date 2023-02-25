@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
+import Home from "./pages/Home";
 
 // Auth stuff
 import jwt_decode from "jwt-decode";
@@ -43,6 +44,7 @@ function App() {
     return (
         <div className="App">
             <Routes>
+                <Route path="/" element={<Home />} />
                 <Route path="/login" exact element={<Login />} />
             </Routes>
         </div>
