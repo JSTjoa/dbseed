@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-var Schema = mongoose.Schema
+var Schema = mongoose.Schema;
 let UserModelSchema = new Schema({
     EmployeeID: {
         type: Number,
@@ -12,17 +12,21 @@ let UserModelSchema = new Schema({
         required: true
     },
     FirstName: {
-        type: String
+        type: String,
+        required: true
     },
     LastName: {
-        type: String
+        type: String,
+        required: true
     },
     Age: {
-        type: Number
+        type: Number,
+        required: true
     },
     Role: {
-        type: Array
+        type: Array,
+        required: true
     }
-})
+});
 
-export default mongoose.model('UserModel', UserModelSchema)
+export default mongoose.model("UserModel", UserModelSchema);
