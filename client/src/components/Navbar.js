@@ -32,9 +32,35 @@ function Navbar() {
                 <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
                     <img src='images/dbs_logo.svg'/>
                 </Link>
+                <div className='menu-icon' onClick ={handleClick}>
+                    <i className = {click ? 'fas fa-times': 'fas fa-bars'} />
+                </div>
+                <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
+                    <li className = 'nav-item'>
+                        <p className = 'nav-links' onClick = {closeMobileMenu}>
+                            Banking
+                        </p>
+                    </li>
+                    <li className = 'nav-item'>
+                        <p className = 'nav-links' onClick = {closeMobileMenu}>
+                            Invest
+                        </p>
+                    </li>
+                    <li className = 'nav-item'>
+                        <p className = 'nav-links' onClick = {closeMobileMenu}>
+                            Learn
+                        </p>
+                    </li>
+                    <li className = 'nav-item'>
+                        <p className = 'nav-links-mobile' onClick = {closeMobileMenu}>
+                            Login
+                            
+                        </p>
+                    </li>
+                </ul>
                 {button && 
                 <Button buttonStyle='btn--primary'> 
-                    Logout <i className ="fa-solid fa-lock"></i> 
+                    Logout <i className ="fa-solid fa-lock-open"></i>
                 </Button>}
             </div>
         </nav>

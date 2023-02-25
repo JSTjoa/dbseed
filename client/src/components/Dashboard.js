@@ -6,9 +6,7 @@ import './Dashboard.css';
 
 function Dashboard() {
   return (
-    <div className='hero-container'>
-        <h1>Hello, User</h1>
-        <p>What do you want to do today?</p>
+    <div className='hero-container1'>
         <DashCards />
     </div>
   )
