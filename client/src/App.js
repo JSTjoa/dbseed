@@ -1,14 +1,14 @@
 import Navbar from "./components/Navbar";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import "./App.css";
-import Login from "./components/Login";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Home from "./pages/Home";
 
-import './components/claimComponentCSS.css'
-import ClaimComponent from './components/claimComponent';
-
+import "./components/claimComponentCSS.css";
+import ClaimComponent from "./components/claimComponent";
+  
 // Auth stuff
-import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/authentication";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
@@ -20,18 +20,14 @@ function App() {
     const navigate = useNavigate();
 
     // Check for token to keep user logged in
-    if (localStorage.jwtToken) {
+    if (localStorage.accessToken) {
         // Set auth token header auth
-        const token = localStorage.jwtToken;
+        const token = localStorage.accessToken;
         setAuthToken(token); // Set token for every request
-
-        console.log("token found", token);
-        // Decode token and get user info and exp
-        const decoded = jwt_decode(token);
 
         // Check for expired token
         const currentTime = Date.now() / 1000; // to get in milliseconds
-        if (decoded.exp < currentTime) {
+        if (localStorage.expiry < currentTime) {
             // Logout user
             store.dispatch(logoutUser());
 
@@ -41,6 +37,7 @@ function App() {
         }
 
         // Set user and isAuthenticated
+        const decoded = { EmployeeId: localStorage.EmployeeId, role: localStorage.role };
         store.dispatch(setCurrentUser(decoded));
     }
 
@@ -49,10 +46,12 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" exact element={<Login />} />
-                <Route path = '/claims' element = {<ClaimComponent/>}></Route>
+                <Route path="/register" exact element={<Register />} />
+                <Route path="/claims" element={<ClaimComponent />}></Route>
             </Routes>
         </div>
     );
+
 }
 
 const mapStateToProps = (state) => ({
