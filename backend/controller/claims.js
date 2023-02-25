@@ -27,6 +27,23 @@ const createClaim =  async (req, res) => {
     }
 }
 
+const getClaim = async (req, res)=>{
+    console.log("hihi");
+    try{
+        console.log(req.params);
+        //Take in the request (ID of employee)  
+        const {id} = req.params;
+        //Query the database for the relevant ID and return
+        const target_ID = await Claims.findOne({ClaimID: id});
+        console.log(target_ID);
+        res.send(target_ID);
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
 module.exports = {
-    createClaim
+    createClaim,
+    getClaim
   };
