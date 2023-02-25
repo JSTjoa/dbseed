@@ -42,7 +42,7 @@ const EditForm = () => {
 {/*             <Button buttonStyle='btn--back' onClick={()=>{onHandleClick123()}}> Back </Button>
  */}
             <div className="container">
-            <h2> New Claim </h2>
+            <h2> Edit Claim </h2>
                 <form className='add-form' onSubmit={onSubmit}>
                     {/* Date: Expense Date */}
                     <div className='form-control'>
