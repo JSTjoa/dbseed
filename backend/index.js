@@ -29,7 +29,12 @@ const corsConfig = {
 // app.use(cors(corsConfig)) // config cors so that front-end can use
 // app.options('*', cors())
 
-app.get("/", (_, res) => res.send("Hello World from services"));
+const Users = require("./model/user-model");
+
+app.get("/getUsers", async (req, res) => {
+    const getusers = await User.find();
+    res.json(getusers);
+});
 //router.post('/login', loginUser)
 //router.post('/logout', logoutUser)
 
