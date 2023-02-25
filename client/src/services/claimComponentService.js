@@ -1,9 +1,9 @@
 import http from '../utils/axios';
 
-function getClaimData() {
+function getClaimData(employeeID) {
     //add code to call endpoint here
     /*
-    http.get() 
+    let employeeClaimList = http.get(`/api/claims/${employeeID}`); 
         // sample: http.get(`/tutorials/${id}`);
     */
     let employeeClaimList = [ //this is dummy data
