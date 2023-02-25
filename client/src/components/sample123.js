@@ -11,6 +11,7 @@ const SampleComponent = () => {
             testing
             <hr></hr>
             {location.state.empId2 && <h5> {location.state.empId2} </h5>}
+            {location.state.claimId && <h5> {location.state.claimId} </h5>}
         </div>
     );
 }
