@@ -33,7 +33,7 @@ const ClaimComponent = () => {
             "LastEditedClaimDate": "2022-08-16T19:35:53+08:00"
            }
     ];
-    const [employeeClaimsData, setEmployeeData] = useState();
+    const [employeeClaimData, setEmployeeData] = useState();
     useEffect(() => {
         //code to get data from backend
         setEmployeeData(employeeClaimList);
@@ -43,7 +43,8 @@ const ClaimComponent = () => {
     <div>
       <h2>inside claim component</h2>
       <table>
-        <tr>
+        <thead>
+          <tr>
             <th>Claim ID</th>
             <th>Expense Date</th>
             <th>Amount</th>
@@ -51,7 +52,24 @@ const ClaimComponent = () => {
             <th>Status</th>
             <th>Last Edited Claim Date</th>
             <th>Actions</th>
-        </tr>
+          </tr>
+        </thead>
+        <tbody>
+          {employeeClaimList.map((data, index) => {
+            return (
+            <tr key={data.ClaimID}>
+              <th>{data.ClaimID}</th>
+              <th>{data.ExpenseDate}</th>
+              <th>{data.Amount}</th>
+              <th>{data.Purpose}</th>
+              <th>{data.Status}</th>
+              <th>{data.LastEditedClaimDate}</th>
+              <th>Actions</th>
+            </tr> 
+            )         
+            })
+          }
+        </tbody>
       </table>
     </div>
   );
