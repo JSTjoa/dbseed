@@ -33,7 +33,7 @@ const createNewUser = async (req, res) => {
         console.log(err);
         res.status(500).send();
     }
-});
+};
 
 const logOutUser = async (req, res) => {
     const user = await User.findOne({
@@ -75,7 +75,8 @@ const logOutUser = async (req, res) => {
         console.log(err);
         res.status(500).send();
     }
-});
+};
+
 module.exports = {
     createNewUser,
     logOutUser
