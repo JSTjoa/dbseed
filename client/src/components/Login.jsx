@@ -33,14 +33,10 @@ const Login = (props) => {
         e.preventDefault();
 
         try {
-            // const response = await axios.post(LOGIN_ENDPT, JSON.stringify({ details }));
-            const response = { accessToken: "test" };
+            const sendingData = { EmployeeID: details.userId, Password: details.password };
+            const response = await axios.post(LOGIN_ENDPT, JSON.stringify(sendingData));
             props.loginUser(response); // If login successful update store
             // const roles = response?.data?.roles; // for role based
-            setDetails({
-                userId: "",
-                password: ""
-            });
             navigate(from_page, { replace: true });
         } catch (err) {
             if (!err?.response) {
@@ -52,6 +48,11 @@ const Login = (props) => {
             } else {
                 setErrMessage("Username or Password is incorrect!");
             }
+        } finally {
+            setDetails({
+                userId: "",
+                password: ""
+            });
         }
     };
 
@@ -62,7 +63,7 @@ const Login = (props) => {
                     <img className="logo" alt="DBS Logo" src="/images/dbs_logo.svg" />
                     <div className="form-group">
                         <div>
-                            <label htmlFor="userId">User ID</label>
+                            <label htmlFor="userId">Employee ID</label>
                         </div>
                         <input
                             type="userId"

@@ -21,6 +21,7 @@ function App() {
         const token = localStorage.jwtToken;
         setAuthToken(token); // Set token for every request
 
+        console.log("token found");
         // Decode token and get user info and exp
         const decoded = jwt_decode(token);
 
@@ -41,7 +42,9 @@ function App() {
 
     return (
         <div className="App">
-            <Login />
+            <Routes>
+                <Route path="/login" exact element={<Login />} />
+            </Routes>
         </div>
     );
 }
