@@ -28,7 +28,7 @@ const corsConfig = {
 // app.use(express.json())
 // app.use(cors(corsConfig)) // config cors so that front-end can use
 // app.options('*', cors())
-const userRouter = require("./routes/users");
+const userRouter = require("./routes/user");
 app.use("/api", userRouter);
 
 app.get("/", (_, res) => res.send("Hello World from services"));
