@@ -12,15 +12,15 @@ function Cards() {
                     <CardItem 
                     src='images/img-dbs 2.jpg'
                     text='Pending'
-                    label='New Feature'/>
+                    label='1'/>
                     <CardItem 
                     src='images/img-dbs 15.jpg'
                     text='Approval'
-                    label='New Feature'/>
+                    label='3'/>
                     <CardItem 
                     src='images/img-dbs 15.jpg'
                     text='Rejected'
-                    label='New Feature'/>
+                    label='2'/>
                 </ul>
             </div>
         </div>
