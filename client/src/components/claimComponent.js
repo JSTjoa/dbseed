@@ -29,7 +29,7 @@ const ClaimComponent = () => {
             "Purpose": "Outpatient Claim",
             "FollowUp": 0,
             "PreviousClaimID": null,
-            "Status": "Approved",
+            "Status": "Pending",
             "LastEditedClaimDate": "2022-08-16T19:35:53+08:00"
            }
     ];
@@ -64,7 +64,9 @@ const ClaimComponent = () => {
               <th>{data.Purpose}</th>
               <th>{data.Status}</th>
               <th>{data.LastEditedClaimDate}</th>
-              <th>Actions</th>
+              <th>
+                {("Pending"===data.Status || "Rejected"===data.Status)? 'Edit'+' '+'Delete':'Nil'}
+              </th>
             </tr> 
             )         
             })
