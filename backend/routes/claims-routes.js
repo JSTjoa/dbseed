@@ -7,13 +7,14 @@ require("dotenv").config();
 
 const claimController = require("../controller/claims");
 
-// router.post("/claims",claimController.createClaim);
+router.post("/claims",claimController.createClaim);
+router.get("/claims/:id",claimController.getClaim);
 
-router
-  .route("/claims")
-//   .get(claimsController.)
-  .post(claimsController.createClaim)
-  .put(claimsController.editClaim)
-//   .delete(claimsController.deleteUser);
+// router
+//   .route("/claims")
+// //   .get(claimsController.)
+//   .post(claimsController.createClaim)
+//   .put(claimsController.editClaim)
+// //   .delete(claimsController.deleteUser);
 
 module.exports = router;

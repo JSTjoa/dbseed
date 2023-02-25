@@ -45,6 +45,10 @@ let ClaimModelSchema = new Schema({
     LastEditedClaimDate:{
         type: String,
         required: true
+    },
+    EmployeeID: {
+        type: Number,
+        required: true
     }
 
 })
