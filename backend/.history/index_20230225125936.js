@@ -4,6 +4,10 @@ const cors = require("cors");
 
 const app = express();
 
+app.use(express.json());
+app.use(cors());
+
+mongoose.set("strictQuery", false);
 mongoose
     .connect(
         "mongodb+srv://user:Testing123@cluster0.475ihrt.mongodb.net/db?retryWrites=true&w=majority",
@@ -15,16 +19,17 @@ mongoose
     .then(() => console.log("Connected to DB"))
     .catch(console.error);
 
-export async function createUser(params) {
-    return new UserModel(params);
-}
+const corsConfig = {
+    credentials: true,
+    origin: true
+};
 
-export async function usernameInDb(username) {
-    const exists = await UserModel.exists({ username: username });
-    return exists;
-}
+const userRouter = require("./routes/users");
+app.use("/api", userRouter);
 
-export async function getUser(EmployeeID) {
-    const user = await UserModel.findOne({ EmployeeID: EmployeeID });
-    return user;
-}
+app.get("/getUsers", async (req, res) => {
+    const getusers = await User.find();
+    res.json(getusers);
+});
+
+app.listen(8000, () => console.log("services listening on port 8000"));
