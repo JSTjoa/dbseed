@@ -7,7 +7,6 @@ const ClaimForm = () => {
     //const [purpose, setPurpose] = useState('')
     //const [amount, setAmount] = useState('')
 
-
     // onChange={(e) => setDate(e.target.value)} 
     
 
@@ -25,19 +24,19 @@ const ClaimForm = () => {
                 </div>
                 {/* Dropdown: Insurance type */}
                 <div className='form-control'>
-                    <label>Insurance type</label>
-                    <input 
-                        type='select'
-                        placeholder="- Select -"
-                        /* value={claimType}  */ 
-                    />
+                    <label>Insurance policy type</label>
+                    <select>
+                        <option value="Car"> Car </option>
+                        <option value="Personal Accident"> Personal Accident </option>
+                        <option selected value="Housing"> Housing </option>
+                    </select>
                 </div>
                 {/* Text: Purpose */}
                 <div className='form-control'>
                     <label>Purpose</label>
                     <input
                         type='text'
-                        placeholder="Key in an amount (in SGD)"
+                        placeholder="(e.g. Car Repairs)"
                         /* value={purpose}
                         onChange={(e) => setPurpose(e.currentTarget.checked)} */
                     />
@@ -47,6 +46,7 @@ const ClaimForm = () => {
                     <label> Amount ($) </label>
                     <input
                         type='text'
+                        placeholder="Key in an amount (in SGD)"
                         /* value={amount}
                         onChange={(e) => setAmount(e.currentTarget.checked)}  */ 
                     />
