@@ -20,12 +20,10 @@ function Cards() {
                     <CardItem 
                     src='images/img-dbs 2.jpg'
                     text='Create a New Claim'
-                    label='New Feature'
                     path='/create'/>
                     <CardItem 
                     src='images/img-dbs 15.jpg'
                     text='Manage Claims'
-                    label='New Feature'
                     path='/claims'/>
                 </ul>
             </div>

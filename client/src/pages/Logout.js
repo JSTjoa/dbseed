@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import '../../App.css';
-import { Button } from './../Button';
 import LoginForm from './LoginForm';
 
 export default function SignUp() {
@@ -34,8 +33,7 @@ export default function SignUp() {
         <div className = "App">
             {(user.userId != "") ? (
                 <div className='welcome'> 
-                    <h1>Welcome, <span>{user.userId}</span></h1>
-                    <Button onClick={Logout}>Logout</Button>
+                    <h1>You have been logged out successfully. <span>{user.userId}</span></h1>
                 </div>
         ) : (
             <LoginForm Login={Login} error={error} />

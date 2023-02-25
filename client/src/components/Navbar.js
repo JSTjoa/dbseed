@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Navbar.css';
 import { Button } from './Button';
 
 function Navbar() {
+    const navigate = useNavigate();
+    const handleNavigate = () => { navigate("/logout")}
 
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
@@ -38,28 +40,28 @@ function Navbar() {
                 <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
                     <li className = 'nav-item'>
                         <p className = 'nav-links' onClick = {closeMobileMenu}>
-                            Banking
+                            test
                         </p>
                     </li>
                     <li className = 'nav-item'>
                         <p className = 'nav-links' onClick = {closeMobileMenu}>
-                            Invest
+                            test
                         </p>
                     </li>
                     <li className = 'nav-item'>
                         <p className = 'nav-links' onClick = {closeMobileMenu}>
-                            Learn
+                            test
                         </p>
                     </li>
                     <li className = 'nav-item'>
                         <p className = 'nav-links-mobile' onClick = {closeMobileMenu}>
-                            Login
+                            test
                             
                         </p>
                     </li>
                 </ul>
                 {button && 
-                <Button buttonStyle='btn--primary'> 
+                <Button buttonStyle='btn--primary' logoutMethod={handleNavigate}>   
                     Logout <i className ="fa-solid fa-lock-open"></i>
                 </Button>}
             </div>
