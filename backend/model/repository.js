@@ -1,18 +1,19 @@
-import UserModel from "./user-model.js";
-import "dotenv/config";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-//Set up mongoose connection
-import mongoose from "mongoose";
+const app = express();
 
-let mongoDB =
-    process.env.ENV == "PROD"
-        ? process.env.DB_CLOUD_URI
-        : process.env.DB_LOCAL_URI;
-
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-
-let db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
+mongoose
+    .connect(
+        "mongodb+srv://user:Testing123@cluster0.475ihrt.mongodb.net/db?retryWrites=true&w=majority",
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        }
+    )
+    .then(() => console.log("Connected to DB"))
+    .catch(console.error);
 
 export async function createUser(params) {
     return new UserModel(params);
