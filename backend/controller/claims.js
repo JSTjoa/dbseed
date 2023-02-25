@@ -50,6 +50,27 @@ const editClaim = async (req,res) => {
     }
 }
 
+const editClaim = async (req,res) => {
+    try {
+        Claims.findOneAndUpdate({ ClaimID : req.body.ClaimID }, {
+            InsuranceID : req.body.InsuranceID,
+            FirstName : req.body.FirstName,
+            LastName : req.body.LastName,
+            ExpenseDate : req.body.ExpenseDate,
+            Amount : req.body.Amount,
+            Purpose : req.body.Purpose,
+            FollowUp : req.body.FollowUp,
+            Status : req.body.Status,
+            LastEditedClaimDate : req.body.LastEditedClaimDate
+        }).then(res.status(200).json({
+                message: "Claim Update Successful"
+            }))
+    } catch (err) {
+        console.log(err);
+        res.status(500).send();
+    }
+}
+
 module.exports = {
     createClaim,
     editClaim
