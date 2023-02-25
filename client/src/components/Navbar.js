@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { Button } from "./Button";
 import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
 
 function Navbar(props) {
     const navigate = useNavigate();
@@ -27,7 +28,8 @@ function Navbar(props) {
 
     window.addEventListener("resize", showButton);
 
-    const handleLogout = () => {
+    const handleLogout = (e) => {
+        e.preventDefault();
         props.logoutUser();
         navigate("/login");
     };
@@ -39,7 +41,7 @@ function Navbar(props) {
                     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                         <img src="images/dbs_logo.svg" />
                     </Link>
-                    {button && (
+                    {button && props.auth.authenticated && (
                         <Button buttonStyle="btn--primary" onClick={handleLogout}>
                             Logout <i className="fa-solid fa-lock"></i>
                         </Button>
@@ -54,4 +56,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, { logoutUser })(Navbar);

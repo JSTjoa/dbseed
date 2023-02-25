@@ -5,8 +5,8 @@ import "../App.css";
 // Auth stuff
 import axios from "../utils/axios";
 import { connect } from "react-redux";
-
-const LOGIN_ENDPT = "/api/user/login"; // TO UPDATE
+import { loginUser } from "../actions/authActions";
+const LOGIN_ENDPT = "/api/login"; // TO UPDATE
 
 const Login = (props) => {
     const navigate = useNavigate();
@@ -31,11 +31,26 @@ const Login = (props) => {
         e.preventDefault();
 
         try {
+            axios.defaults.timeout = 1000;
             const sendingData = { EmployeeID: details.userId, Password: details.password };
-            const response = await axios.post(LOGIN_ENDPT, JSON.stringify(sendingData));
+            console.log(sendingData);
+            // const response = await axios.post(LOGIN_ENDPT, JSON.stringify(sendingData));
+
+            const response = {
+                EmployeeID: 3331,
+                FirstName: "Irene",
+                LastName: "Lim",
+                TokenExpiry: "2023-02-26T07:59:30.000Z",
+                Role: ["Customer"],
+                authenticated: true,
+                message: "Login success",
+                accessToken:
+                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjozMzMxLCJpYXQiOjE2NzczMTE5NzAsImV4cCI6MTY3NzM5ODM3MH0.Jq_CRMRkgNxW9smrw5MHevznvWY3oQwp9TO1QrVqzQQ"
+            };
+            console.log("HELELOS");
             props.loginUser(response); // If login successful update store
             // const roles = response?.data?.roles; // for role based
-            navigate(from_page, { replace: true });
+            navigate("/home", { replace: true });
         } catch (err) {
             if (!err?.response) {
                 setErrMessage("No Response from server. Please try again");
@@ -104,4 +119,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, { loginUser })(Login);

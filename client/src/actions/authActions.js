@@ -8,18 +8,16 @@ export const registerUser = (resData) => (dispatch) => {
 
 // Login - get user token
 export const loginUser = (resData) => (dispatch) => {
-    console.log("called", resData);
-    const { accessToken, EmployeeID, role } = resData;
+    const { accessToken, EmployeeID, TokenExpiry } = resData;
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("EmployeeId", EmployeeID);
-    localStorage.setItem("role", role);
-    localStorage.setItem("expiry", role); // TO UPDATE
+    localStorage.setItem("expiry", TokenExpiry); // TO UPDATE
 
     // Set token to Auth header
     setAuthToken(accessToken);
 
     // Set current user
-    dispatch(setCurrentUser({ EmployeeID, role }));
+    dispatch(setCurrentUser(resData));
 };
 
 // Set logged in user
@@ -46,7 +44,7 @@ export const logoutUser = () => (dispatch) => {
     // Remove token from local storage
     localStorage.removeItem("accessToken");
     localStorage.removeItem("EmployeeId");
-    localStorage.removeItem("role");
+    localStorage.removeItem("expiry");
 
     // Remove auth header for future requests
     setAuthToken(false);

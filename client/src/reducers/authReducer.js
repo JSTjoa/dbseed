@@ -3,6 +3,9 @@ import { SET_CURRENT_USER, USER_LOADING } from "../actions/types";
 export const authInitialState = {
     authenticated: false,
     EmployeeId: "",
+    FirstName: "",
+    LastName: "",
+
     role: [],
     loading: false
 };
@@ -14,7 +17,9 @@ export default function authReducer(state = authInitialState, action) {
                 ...state,
                 authenticated: action.payload.authenticated,
                 EmployeeId: action.payload.EmployeeId,
-                role: action.payload.role
+                FirstName: action.payload.FirstName,
+                LastName: action.payload.LastName,
+                role: action.payload.Role
             };
         case USER_LOADING:
             return {
