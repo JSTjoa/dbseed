@@ -1,3 +1,8 @@
+.btn-block {
+    display: block;
+    width: 100%;
+  }
+  
 .form-control {
     margin: 20px 0;
   }
@@ -13,3 +18,12 @@
     padding: 3px 7px;
     font-size: 17px;
 }
+.container {
+    max-width: 500px;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 300px;
+    border: 1px solid steelblue;
+    padding: 30px;
+    border-radius: 5px;
+  }
