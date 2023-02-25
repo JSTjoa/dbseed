@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
+import { logo } from "../../public/images/dbs_logo.svg";
 
 import axios from "../utils/axios";
 import { setAuthToken } from "../utils/authentication";
